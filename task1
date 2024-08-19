@@ -1,0 +1,16 @@
+//task1
+(defn sum-list-set [list1 set1]
+  (let [ ;; Convert nils to 0s in both lists
+        cleaned-list1 (map #(if (nil? %) 0 %) list1)
+        cleaned-set1 (map #(if (nil? %) 0 %) set1)
+        ;; Extend the shorter sequence with 0s if necessary
+        max-length (max (count cleaned-list1) (count cleaned-set1))
+        extended-list1 (concat cleaned-list1 (repeat (- max-length (count cleaned-list1)) 0))
+        extended-set1 (concat cleaned-set1 (repeat (- max-length (count cleaned-set1)) 0))]
+    ;; Sum corresponding elements
+    (map + extended-list1 extended-set1)))
+
+;; Example usage
+(def list1 [100 200 nil 400 nil 1 nil])
+(def set1 [100 200 300 nil 400 nil 500 600])
+(println (sum-list-set list1 set1))
