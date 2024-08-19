@@ -1,0 +1,17 @@
+;; Define the matrix
+(def matrix [[1 1250 3500]
+             [2 1400 3600]
+             [3 1100 3400]
+             [4 1200 3800]])
+
+;; Function to add the sum of each row
+(defn add-row-sums [matrix]
+  (map #(conj % (apply + %)) matrix))
+
+;; Add sums to each row
+(def matrix-with-sums (add-row-sums matrix))
+
+;; Print the matrix with sums
+(println "Matrix with sums:")
+(doseq [row matrix-with-sums]
+  (println row))
