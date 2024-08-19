@@ -4,9 +4,12 @@
     (last (nth matrix (dec index)))
     -1))  ;; Return -1 if index is out of bounds
 
-;; usage
-(println "Sum of row 1:" (sum-of-row matrix-with-sums 1))  ;; Should output 4751
-   
-(println "Sum of row 3:" (sum-of-row matrix-with-sums 3))  ;; Should output 4503
-   
-(println "Sum of row 5:" (sum-of-row matrix-with-sums 5))  ;; Should output -1 (out of bounds)
+(println "Sum of row 1:" (sum-of-row matrix-with-sums 1))  
+
+
+;; Function to get the sum of a specific column (1-based index)
+(defn sum-of-column [matrix index]
+  (if (and (pos? index) (<= index (count (first matrix))))
+    (apply + (map #(nth % (dec index)) matrix))
+    -1))  ;; Return -1 if index is out of bounds
+(println "Sum of column 1:" (sum-of-column matrix-with-sums 1))  ;; 
